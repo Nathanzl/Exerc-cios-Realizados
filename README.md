@@ -1,0 +1,2 @@
+# Estou apenas adicionando exercícios da faculdade realizados até agora para compreender o básico em python.
+# Muito conhecimento ainda me aguarda.
