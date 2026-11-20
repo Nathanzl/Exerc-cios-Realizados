@@ -1,0 +1,40 @@
+import sys
+import os
+import importlib
+import ProjetoZero
+
+##### PROJETO UM NATHAN ZL 2026
+
+def menu():
+    print("> > > Escolha uma opção < < < ")
+    print("----> 1. Cadastrar usuário ")
+    print("----> 2. Em teste ")
+    print("----> 3. Calculadora. ")
+    print("----> 4. Sair ")
+
+    choice = input("----> Digite o número da opção desejada: ")
+
+    if choice == "1":
+        print("----> Você escolheu a Opção 1 [Cadastrar usuário].")
+        ProjetoZero.cadastro_usuario1()
+    elif choice == "2":
+        print("----> Você escolheu a Opção 2 [Em teste].")
+        # Adicione aqui a lógica para a Opção 2
+    elif choice == "3":
+        print("----> Você escolheu a Opção 3 [Calculadora].")
+        ProjetoZero.calculadora()
+    elif choice == "4":
+        print("----> Você escolheu a Opção 4 [Sair].")
+        sys.exit()
+    else:
+        print("----> Opção inválida. Tente novamente.")
+        menu()
+
+startuser = input("----> Seja bem-vindo, vamos começar? (sim/não): ").lower()
+if startuser == "sim":
+    menu()
+elif startuser == "não":
+    print("----> Programa encerrado, até mais!")
+else:
+    print("----> Opção inválida. Tente novamente.")
+    menu()
