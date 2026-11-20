@@ -1,0 +1,21 @@
+def escovar():
+
+    menu = input("Você quer escovar os dentes? Digite 1 para SIM / 2 para NÃO / 3 para sair: ")
+
+    if menu == "1":
+        print("Escovando os dentes...")
+        return True
+    elif menu == "2":
+        print("Você escolheu ficar com bafo de pica")
+        return False
+    elif menu == "3":
+        print("Saindo do programa...")
+        return False
+    else:
+        print("Opção inválida, escolha novamente.")
+        return True
+
+while True:
+    escovar()
+    if not escovar():
+        break
