@@ -1,2 +1,15 @@
 # Exercicios-Realizados
-Aqui estarei colocando todo e qualquer exercício feito em python pelo vscode.
+##### idade
+idade = int(input("Qual é a sua idade? : "))
+
+if idade >= 18:
+    print("Você pode entrar.")
+elif idade >= 16:
+    print("Você pode entrar com responsável.")
+else:
+    print("Você não pode entrar")
+
+if idade % 2 == 0:
+    print("Sua idade é par.")
+else: 
+    print("Sua idade é ímpar.")
