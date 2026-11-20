@@ -1,0 +1,11 @@
+#teste
+
+hora_trabalhada = float(input("Digite a quantidade de horas trabalhada: "))
+valor_hora = float(input("Digite o valor da hora trabalhada: "))
+
+if (hora_trabalhada >= 80):
+    bonus = 500
+else: bonus = 0
+
+salario = (hora_trabalhada * valor_hora) + bonus
+print (f"o seu salário será de: {salario}")
