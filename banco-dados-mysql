@@ -1,0 +1,99 @@
+# MEU PRIMEIRO SCRIPT EM BANCO DE DADOS PELO MYSQL
+# TRABALHO SOLICITADO PELO PROFESSOR.
+# UNIFECAF 2026
+# ACREDITO SER INTERESSANDO MOSTRAR ESTE SCRIPT.
+
+/* SCRIPT DO TRABALHO DE BANCO DE DADOS - SISTEMA DE VENDAS PARA SUPERMERCADO - UNIFECAF - 1º SEMESTRE
+-> ALUNO: NATHAN ZILIO DA SILVA 
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+#ATIVA DATABASE A SER USADO
+CREATE DATABASE db_supermercado_center;
+USE db_supermercado_center;
+DROP DATABASE db_supermercado_center; # PRECISEI DELETAR O BANCO POIS CRIEI AS TABELAS SEM "TBL_CLIENTE (EXEMPLO)" E LEMBREI QUE ERA OBRIGATÓRIO NO TRABALHO.
+DROP TABLE tbl_produto;
+
+#MOSTRA DATABASE EXISTENTES
+SHOW DATABASES;
+SHOW TABLES;
+
+###############################################################################
+#CRIANDO PRIMEIRAS TABELAS E INICIANDO O SCRIPT DO TRABALHO
+CREATE TABLE tbl_cliente(
+	id int primary key not null auto_increment,
+    nome varchar(90),
+    cpf varchar(20)
+    
+);
+
+CREATE TABLE tbl_telefone(								# CRIADO TABELAS PARA CADASTRO DO USUÁRIO, TABELA TELEFONE SEPARADA CASO HAJA MAIS NÚMEROS POR CLIENTE.
+	id int primary key not null auto_increment,
+    numero varchar(30),
+    id_cliente int not null,
+    
+    constraint FK_cliente_telefone
+    foreign key (id_cliente)
+    references tbl_cliente (id)
+
+);
+
+###############################################################################
+
+CREATE TABLE tbl_colaborador(
+	id int primary key not null auto_increment,
+    nome varchar(90),
+    cargo varchar(40)
+
+);													# CRIADO TABELAS DE COLABORADORES, TABELA TELEFONE SEPARADO CASO HAJA MAIS NÚMEROS DO COLABORADOR.
+
+CREATE TABLE tbl_telefone_colab(
+	id int primary key not null auto_increment,
+    numero varchar(30),
+    id_colaborador int not null,
+    
+    constraint FK_colaborador_telefone_colab
+    foreign key (id_colaborador)
+    references tbl_colaborador (id)
+
+);
+###############################################################################
+
+CREATE TABLE tbl_categoria(
+	id int primary key not null auto_increment,
+    nome varchar(45)
+
+);
+
+CREATE TABLE tbl_produto(
+	id int primary key not null auto_increment,
+    nome varchar(45),
+    cod_barras varchar(45) not null unique,
+    qtd_estoque int,
+    valor_venda decimal(10,2),
+    tbl_categoria_id int not null,
+    
+    constraint FK_categoria_produto
+    foreign key (tbl_categoria_id)
+    references tbl_categoria (id)
+
+);
+
+CREATE TABLE tbl_venda(
+	id int primary key not null auto_increment,
+    data_venda date,
+    forma_pagamento varchar(45),
+    desconto_valor decimal(10,2),
+    valor_total decimal(10,2),
+    tbl_cliente_id int,
+    tbl_colaborador_id int not null,
+    
+    constraint FK_cliente_venda
+    foreign key (tbl_cliente_id)
+    references tbl_cliente (id),
+    
+    constraint FK_colaborador_venda
+    foreign key (tbl_colaborador_id)
+    references tbl_colaborador (id)
+
+);
+
