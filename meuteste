@@ -1,0 +1,83 @@
+#cadastro de usuário
+def cadastro_usuario1():
+    print("#-#-# Vamos começar o cadastro do usuário #-#-#")
+    nome_usuario = input("Qual o seu nome?: ")
+    print(f"Seja bem vindo(a) {nome_usuario}, Qual sua idade? ")
+
+    idade_usuario = int(input("Digite sua idade: "))
+    print(f'Seu nome é {nome_usuario} e você tem {idade_usuario} anos. Para confirmar, digite "sim" ou "não": ')
+    
+    while True:
+        resposta = input().lower()
+        if resposta != "sim" and resposta != "não":
+            print("Resposta inválida. Por favor, digite 'sim' ou 'não'.")
+        elif resposta == "sim":
+            print(f"Perfeito, {nome_usuario}! Vamos prosseguir com o cadastro.")
+            cadastro_usuario2()
+            break
+        elif resposta == "não":
+            print(f"Entendido, vamos refazer o cadastro.")
+            cadastro_usuario1()
+            break    
+
+def cadastro_usuario2():
+    email_usuario = input("Digite seu email: ")
+    print(f"Seu email é {email_usuario}, está correto? Digite 'sim' ou 'não':")
+    
+    resposta_email = input().lower()
+    while True:
+        resposta_email = input().lower()
+        if resposta_email != "sim" and resposta_email != "não":
+            print("Resposta inválida. Por favor, digite  'sim' ou 'não'.")
+        elif resposta_email == "sim":
+            print(f"Perfeito! Vamos prosseguir com o cadastro.")
+            finalizar_cadastro()
+            break
+        elif resposta_email == "não":
+            print(f"Entendido, vamos editar seu email.")
+            cadastro_usuario2()
+            break
+    
+def finalizar_cadastro():
+    estado_usuario = input("Em qual estado você nasceu?: ")
+    cidade_usuario = input("Em qual cidade você nasceu?: ")
+    nacionalidade_usuario = input("Qual é a sua nacionalidade?: ")
+    print(f"Seu cadastro está finalizado {nome_usuario}, enviaremos os dados via e-mail, confira sua caixa de mensagem e obrigado pela preferência.")
+    
+    mostrar_usuario()
+
+def mostrar_usuario():
+    nome, idade = cadastro_usuario1()
+    email = cadastro_usuario2()
+    estado, cidade, nacionalidade = finalizar_cadastro()
+    
+    print("Cadastro finalizado com sucesso! Aqui estão suas informações:")
+    return f"\nNome: {nome}, \nIdade: {idade}, \nEmail: {email}, \nEstado: {estado}, \nCidade: {cidade}, \nNacionalidade: {nacionalidade}"
+ 
+if __name__ == "menu":
+    cadastro_usuario1()
+ 
+def calculadora():
+     print("----> Bem-vindo à calculadora <----")
+     calculo1 = input("Digite o primeiro número: ")
+     calculo2 = input("Digite o segundo número: ")
+     
+     operacao = input("Digite a operação desejada para o cálculo: (+, -, *, /): ")
+     
+     if operacao == "+":
+         resultado = float(calculo1) + float(calculo2)
+         print(f"O resultado da soma é: {resultado}")
+     elif operacao == "-":
+         resultado = float(calculo1) - float(calculo2)
+         print(f"O resultado da subtração é: {resultado}")
+     elif operacao == "*":
+         resultado = float(calculo1) * float(calculo2)
+         print(f"O resultado da multiplicação é: {resultado}")
+     elif operacao == "/":
+         if float(calculo2) == 0:
+             print("Não é possível dividir por zero.")
+         else:
+             resultado = float(calculo1) / float(calculo2)
+             print(f"O resultado da divisão é: {resultado}")
+     else:
+         print("Operação inválida.")
