@@ -1,0 +1,48 @@
+print("Olá! Seja bem-vindo a calculadora simples.")
+print("Selecione abaixo a operação desejada:")
+print("1 - Soma")
+print("2 - Subtração")
+print("3 - Multiplicação")
+print("4 - Divisão")
+
+def UsuarioEscolheOperacao():
+    operacao = int(input("Digite o número desejado: "))
+
+    if operacao == 1:
+        print("Você escolheu a operação de somar números.")
+    elif operacao == 2:
+        print("Você escolheu a operação de subtrair números.")
+    elif operacao == 3:
+        print("Você escolheu a operação de multiplicar números.")
+    else:
+        print("Opção inválida. Por favor, selecione uma operação válida.")
+        return UsuarioEscolheOperacao()
+
+    if operacao == 1:
+        num1 = float(input("Digite o primeiro número: "))
+        num2 = float(input("Digite o segundo número: "))
+        resultado = num1 + num2
+        print(f"O resultado da soma é: {resultado}")
+    elif operacao == 2:
+        num1 = float(input("Digite o primeiro número: "))
+        num2 = float(input("Digite o segundo número: "))
+        resultado = num1 - num2
+        print(f"O resultado da subtração é: {resultado}"  
+    elif operacao == 3:                                       #Nathan zilio - entrada 20-11-2026
+        num1 = float(input("Digite o primeiro número: "))
+        num2 = float(input("Digite o segundo número: "))
+        resultado = num1 * num2
+        print(f"O resultado da multiplicação é: {resultado}")
+    elif operacao == 4:
+        num1 = float(input("Digite o primeiro número: "))
+        num2 = float(input("Digite o segundo número: "))
+        if num2 == 0:
+            print("Erro: Divisão por zero não é permitida.")
+            return UsuarioEscolheOperacao()
+        resultado = num1 / num2
+        print(f"O resultado da divisão é: {resultado}")
+    else:
+            print("Operação inválida. Por favor, tente novamente.") 
+            return UsuarioEscolheOperacao()
+
+UsuarioEscolheOperacao()
